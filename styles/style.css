@@ -1,5 +1,312 @@
-/* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
-
 .page {
-  /* сохраните в разметке и стилях класс page. На его основе работает скрипт. */
+  display: grid;
+  background-image: var(--cover-image);
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: 'IBM Plex mono', sans-serif;
+  padding-inline: var(--padding);
+}
+
+.page:not(.headline) {
+  font-size: 18px;
+}
+
+.title-decor {
+  color: var(--second-accent-color);
+  background-color: var(--accent-color);
+}
+
+.header {
+  display: grid;
+  position: relative;
+  padding-block: var(--padding);
+  margin-block-end: var(--in-page-margin-block-end);
+}
+
+.decorated-zone::before {
+  content: "";
+  display: block;
+  inline-size: 25px;
+  block-size: 25px;
+  border-block-start: 1px solid var(--accent-color); 
+  border-inline-end: 1px solid var(--accent-color);
+  justify-self: end;
+}
+
+.decorated-zone::after {
+  content: "";
+  display: block;
+  inline-size: 25px;
+  block-size: 25px;
+  border-block-end: 1px solid var(--accent-color); 
+  border-inline-start: 1px solid var(--accent-color);
+}
+
+.rec-element {
+  position: absolute;
+  font-weight: var(--regular-font-weight);
+  color: var(--accent-color);
+  line-height: 25px;
+  text-transform: uppercase;
+  top: var(--rec-element-top);
+  right: 10px;
+}
+
+.rec-element::after {
+  content: "";
+  display: block;
+  inline-size: 9px;
+  block-size: 9px;
+  background-color: var(--accent-color);
+  box-shadow: 0px 0px 4px 2px var(--accent-color);
+  border-radius: 50%;
+  margin-inline-start: 43px;
+  margin-block-start: -18px;
+
+}
+
+.header__theme-menu {
+  line-height: 18px;
+  font-weight: var(--regular-font-weight);
+  margin-block-start: var(--header__theme-menu-margin-block-start);
+  justify-self: end;
+}
+
+.header__theme-menu-list {
+  display: grid;
+  gap: 12px;
+}
+
+.header__theme-menu-button {
+  border: none;
+  color: var(--accent-color);
+  background-color: transparent;
+  padding-inline: 13px;
+  padding-block: 3px;
+  text-transform: lowercase;
+}
+
+.header__theme-menu-button:focus {
+  outline: none;
+}
+
+.header__theme-menu-button:focus-visible {
+  border-bottom: 1px solid var(--accent-color);  
+}
+
+.header__theme-menu-button:hover {
+  outline: 1px solid var(--menu-hover-color);
+}
+
+.header__theme-menu-button_active {
+  outline: 1px solid var(--accent-color);
+  pointer-events: none;
+}
+
+.headline {
+  font-size: var(--headline-font-size);
+  font-weight: var(--bold-font-weight);
+  line-height: var(--headline-line-height);
+  color: var(--headline-color);
+}
+
+.headline-header {
+  text-shadow: 4px 4px 0px var(--accent-color);
+  margin-block-start: var(--headline-header-margin-block-start);
+  margin-block-end: var(--headline-header-margin-block-end);
+  margin-inline-start: var(--headline-header-margin-inline-start);
+}
+
+.header__text {
+  font-weight: var(--bold-font-weight);
+  line-height: var(--primary-line-height);
+  margin-block-end: var(--header__text-margin-block-end);
+}
+
+.main {
+  display: grid;
+  gap: var(--main-gap);
+  margin-block-end: var(--in-page-margin-block-end);
+}
+
+.question {
+  display: grid;
+  column-gap: var(--question-gap);
+}
+
+.question__title {
+  color: var(--accent-color);
+  font-weight: var(--bold-font-weight);
+  line-height: var(--primary-line-height);
+  margin-block-end: var(--in-question-margin-block-end);
+  font-size: inherit;
+}
+
+.answer__title {
+  line-height: var(--primary-line-height);
+  font-weight: var(--bold-font-weight);
+}
+
+.question:nth-of-type(3) .answer__title {
+  font-weight: var(--regular-font-weight);
+}
+
+.answer__paragraph {
+  color: var(--primary-color);
+  font-weight: var(--regular-font-weight);
+  line-height: var(--primary-line-height);
+  margin-block-start: 10px;
+  margin-block-end: var(--in-question-margin-block-end);
+}
+
+.answer:last-of-type .answer__paragraph {
+  margin-block-end: 0;
+}
+
+.annotation-of-answers {
+  margin-block-end: var(--in-question-margin-block-end);
+}
+
+.gallery {
+  display: grid;
+  gap: var(--gallery-gap);
+}
+
+.gallery__title {
+  font-size: inherit;
+}
+
+.image {
+  inline-size: var(--image-size);
+  max-inline-size: var(--image-size);
+  object-fit: cover;
+}
+
+.footer {
+  padding-block: var(--padding);
+}
+
+.headline-footer {
+  text-shadow: 2px 2px 0px var(--accent-color);
+  padding-block: var(--headline-footer-padding-block);
+  text-align: center;
+  
+}
+
+.link {
+  text-shadow: 2.3px 1px 0 var(--accent-color);
+  text-decoration: none;
+}
+
+.link:focus {
+  outline: none;
+}
+
+.link:focus-visible {
+  outline: 1px solid var(--primary-color);
+}
+
+.link:hover {
+  border-bottom: 1px solid var(--primary-color);
+}
+
+@media (width >= 768px) {
+  .header {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .decorated-zone::before {
+    grid-column: 2/auto;
+  }
+  
+  .headline-header {
+    grid-column: 1/3;
+  }
+
+  .header__text {
+    grid-column: 2/auto;
+  }
+
+  .image {
+    block-size: var(--image-size);
+  }
+
+  .gallery {
+    grid-template-areas:
+    "title title title"
+    "sunset sunset ice-cream"
+    "tape books ice-cream"
+    "tape street street";
+  }
+
+  .gallery__title {
+    grid-area: title;
+  }
+
+  .image:first-of-type {
+    grid-area: sunset;
+  }
+
+  .image:nth-of-type(2) {
+    grid-area: ice-cream;
+  }
+
+  .image:nth-of-type(3) {
+    grid-area: tape;
+  }
+
+  .image:nth-of-type(4) {
+    grid-area: books;
+  }
+
+  .image:last-of-type {
+    grid-area: street;
+  }
+}
+
+@media (768px <= width < 1024px) {
+  .header__theme-menu {
+    grid-column: 2/auto;
+  }
+  
+  .question {
+    grid-template-columns: fit-content(236px) 1fr;
+  }
+
+  .question:not(:nth-of-type(2)) .answer {
+    grid-column: 2/auto;
+  }
+
+  .question:nth-of-type(2) .answer {
+    grid-column: 1/3;
+  }
+}
+
+@media (width >= 1024px) {
+  .decorated-zone::before {
+    grid-row: 1/auto;
+  }
+  
+  .header__theme-menu {
+    justify-self: center;
+    grid-column: 1/3;
+    grid-row: 1/auto;
+  }
+
+  .header__theme-menu-list {
+    display: flex;
+  }
+
+  .question {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .question:not(:nth-of-type(2)) .answer {
+    grid-column: 2/4;
+  }
+
+  .question:nth-of-type(2) .answer:first-of-type {
+    grid-column: 1/auto;
+  }
 }
