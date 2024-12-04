@@ -1,38 +1,39 @@
 :root {
---cover-image: url(/images/cover-image-dark.png);
---headline-font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
---primary-line-height: 23.4px;
---headline-line-height: 95.7px;
---bold-font-weight: 700;
---regular-font-weight: 400;
---primary-color: #F1B2CE;
---accent-color: #FF0070;
---second-accent-color: #000028;
---headline-color: #DB00FF;
---menu-hover-color: #FF007066;
---padding: 10px;
---in-page-margin-block-end: 40px;
---rec-element-top: 10px;
---header__theme-menu-margin-block-start: 40px;
---headline-header-margin-inline-start: 0;
---headline-header-margin-block-start: 68px;
---headline-header-margin-block-end: 55px;
---header__text-margin-block-end: 31px;
---main-gap: 50px;
---question-gap: 0;
---in-question-margin-block-end: 20px;
---gallery-gap: 10px;
---image-size: 100%;
---headline-footer-padding-block: 250px;
+  --cover-image: url(../images/cover-image-dark.png);
+  --headline-font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  --primary-line-height: 23.4px;
+  --headline-line-height: 95.7px;
+  --bold-font-weight: 700;
+  --regular-font-weight: 400;
+  --page-background-color: #000028;
+  --accent-color: #ff0070;
+  --headline-color: #db00ff;
+  --menu-hover-color: #ff007066;
+  --title-decor-text-color: var(--page-background-color);
+  --decor-color: var(--accent-color); 
+  --primary-text-color: #f1b2ce;
+  --rec-element-display: block;
+  --padding: 10px;
+  --header-footer-block-size: 100vh;
+  --header-footer-min-block-size: 668px;
+  --rec-element-top: 10px;
+  --header-theme-menu-padding-block-end: 30px;
+  --headline-header-margin-inline-start: 0;
+  --in-page-margin-block-end: 40px;
+  --main-gap: 50px;
+  --question-gap: 0;
+  --in-question-margin-block-end: 20px;
+  --gallery-gap: 10px;
+  --image-size: 100%;
 }
 
 @media (width >= 768px) {
   :root {
-    --headline-font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
     --padding: 20px;
-    --in-page-margin-block-end: 60px;
     --rec-element-top: 20px;
+    --headline-font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
     --headline-header-margin-inline-start: -20px;
+    --in-page-margin-block-end: 60px;
     --main-gap: 80px;
     --question-gap: 20px;
     --gallery-gap: 20px;
@@ -41,22 +42,15 @@
 
 @media (768px <= width <= 1024px) {
   :root {
+    --header-footer-min-block-size: 1024px;
     --headline-line-height: 99px;
-    --header__theme-menu-margin-block-start: 147px;
-    --headline-header-margin-block-start: 176px;
-    --headline-header-margin-block-end: 161px;
-    --header__text-margin-block-end: 138px;
-    --headline-footer-padding-block: 418px;
   }
 }
 
 @media (width >= 1024px) {
   :root {
+    --header-footer-min-block-size: 768px;
+    --header-theme-menu-padding-block-end: 0;
     --headline-line-height: 129.53px;
-    --header__theme-menu-margin-block-start: 0;
-    --headline-header-margin-block-start: 274px;
-    --headline-header-margin-block-end: 114px;
-    --header__text-margin-block-end: 90px;
-    --headline-footer-padding-block: 274px;
   }
 }

@@ -1,32 +1,34 @@
 .page {
   display: grid;
+  background-color: var(--page-background-color);
   background-image: var(--cover-image);
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
-  font-family: 'IBM Plex mono', sans-serif;
+  font-family: 'IBM Plex mono', monospace;
+  font-size: 18px;
   padding-inline: var(--padding);
 }
 
-.page:not(.headline) {
-  font-size: 18px;
-}
-
 .title-decor {
-  color: var(--second-accent-color);
-  background-color: var(--accent-color);
+  color: var(--title-decor-text-color);
+  background-color: var(--decor-color);
 }
 
 .header {
+  block-size: var(--header-footer-block-size);
+  min-block-size: var(--header-footer-min-block-size);
   display: grid;
+  grid-template-rows: min-content 1fr min-content 1fr min-content;
   position: relative;
   padding-block: var(--padding);
   margin-block-end: var(--in-page-margin-block-end);
 }
 
 .decorated-zone::before {
-  content: "";
+  content: '';
   display: block;
+  grid-row: 1/auto;
   inline-size: 25px;
   block-size: 25px;
   border-block-start: 1px solid var(--accent-color); 
@@ -35,8 +37,9 @@
 }
 
 .decorated-zone::after {
-  content: "";
+  content: '';
   display: block;
+  grid-row: 5/auto;
   inline-size: 25px;
   block-size: 25px;
   border-block-end: 1px solid var(--accent-color); 
@@ -45,6 +48,7 @@
 
 .rec-element {
   position: absolute;
+  display: var(--rec-element-display);
   font-weight: var(--regular-font-weight);
   color: var(--accent-color);
   line-height: 25px;
@@ -54,7 +58,7 @@
 }
 
 .rec-element::after {
-  content: "";
+  content: '';
   display: block;
   inline-size: 9px;
   block-size: 9px;
@@ -69,8 +73,10 @@
 .header__theme-menu {
   line-height: 18px;
   font-weight: var(--regular-font-weight);
-  margin-block-start: var(--header__theme-menu-margin-block-start);
   justify-self: end;
+  grid-row: 2/auto;
+  align-self: center;
+  padding-block-end: var(--header-theme-menu-padding-block-end); 
 }
 
 .header__theme-menu-list {
@@ -92,11 +98,12 @@
 }
 
 .header__theme-menu-button:focus-visible {
-  border-bottom: 1px solid var(--accent-color);  
+  border-block-end: 1px solid var(--accent-color);  
 }
 
 .header__theme-menu-button:hover {
   outline: 1px solid var(--menu-hover-color);
+  cursor: pointer;
 }
 
 .header__theme-menu-button_active {
@@ -112,16 +119,17 @@
 }
 
 .headline-header {
-  text-shadow: 4px 4px 0px var(--accent-color);
-  margin-block-start: var(--headline-header-margin-block-start);
-  margin-block-end: var(--headline-header-margin-block-end);
+  text-shadow: 4px 4px 0px var(--decor-color);
+  grid-row: 3/auto;
   margin-inline-start: var(--headline-header-margin-inline-start);
 }
 
 .header__text {
+  grid-row: 4/auto;
+  align-self: center;
   font-weight: var(--bold-font-weight);
   line-height: var(--primary-line-height);
-  margin-block-end: var(--header__text-margin-block-end);
+  margin-block-start: 25px; 
 }
 
 .main {
@@ -146,14 +154,15 @@
 .answer__title {
   line-height: var(--primary-line-height);
   font-weight: var(--bold-font-weight);
+  font-size: inherit;
 }
 
-.question:nth-of-type(3) .answer__title {
+.question-how .answer__title {
   font-weight: var(--regular-font-weight);
 }
 
 .answer__paragraph {
-  color: var(--primary-color);
+  color: var(--primary-text-color);
   font-weight: var(--regular-font-weight);
   line-height: var(--primary-line-height);
   margin-block-start: 10px;
@@ -165,6 +174,7 @@
 }
 
 .annotation-of-answers {
+  font-size: inherit;
   margin-block-end: var(--in-question-margin-block-end);
 }
 
@@ -184,18 +194,22 @@
 }
 
 .footer {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: min-content 1fr min-content 1fr min-content;;
+  block-size: var(--header-footer-block-size);
+  min-block-size: var(--header-footer-min-block-size);
   padding-block: var(--padding);
 }
 
 .headline-footer {
-  text-shadow: 2px 2px 0px var(--accent-color);
-  padding-block: var(--headline-footer-padding-block);
+  text-shadow: 2px 2px 0px var(--decor-color);
+  grid-row: 3/auto;
   text-align: center;
-  
 }
 
 .link {
-  text-shadow: 2.3px 1px 0 var(--accent-color);
+  text-shadow: 2px 2px 0 var(--decor-color);
   text-decoration: none;
 }
 
@@ -204,11 +218,11 @@
 }
 
 .link:focus-visible {
-  outline: 1px solid var(--primary-color);
+  outline: 1px solid var(--primary-text-color);
 }
 
 .link:hover {
-  border-bottom: 1px solid var(--primary-color);
+  border-block-end: 1px solid var(--primary-text-color);
 }
 
 @media (width >= 768px) {
@@ -228,40 +242,60 @@
     grid-column: 2/auto;
   }
 
+  .question-how {
+    grid-template-rows: min-content min-content 1fr;
+  }
+
+  .question-how .question__title {
+    grid-row: 1/3;
+  }
+
+  .annotation-of-answers {
+    grid-row: 1/auto;
+  }
+
+  .question-how .answer:first-of-type {
+    grid-row: 2/4;
+  }
+
   .image {
     block-size: var(--image-size);
   }
 
   .gallery {
     grid-template-areas:
-    "title title title"
-    "sunset sunset ice-cream"
-    "tape books ice-cream"
-    "tape street street";
+    'title title title'
+    'sunset sunset ice-cream'
+    'tape books ice-cream'
+    'tape street street';
   }
 
   .gallery__title {
     grid-area: title;
   }
 
-  .image:first-of-type {
+  .image-sunset {
     grid-area: sunset;
   }
 
-  .image:nth-of-type(2) {
+  .image-ice-cream {
     grid-area: ice-cream;
   }
 
-  .image:nth-of-type(3) {
+  .image-tape {
     grid-area: tape;
   }
 
-  .image:nth-of-type(4) {
+  .image-books {
     grid-area: books;
   }
 
-  .image:last-of-type {
+  .image-street {
     grid-area: street;
+  }
+
+  .headline-footer {
+    padding-inline-start: 25px;
   }
 }
 
@@ -274,16 +308,16 @@
     grid-template-columns: fit-content(236px) 1fr;
   }
 
-  .question:not(:nth-of-type(2)) .answer {
+  .question:not(.question-what) .answer {
     grid-column: 2/auto;
   }
 
-  .question:nth-of-type(2) .answer {
+  .question-what .answer {
     grid-column: 1/3;
   }
 }
 
-@media (width >= 1024px) {
+@media (width >= 1024px) {  
   .decorated-zone::before {
     grid-row: 1/auto;
   }
@@ -302,11 +336,15 @@
     grid-template-columns: repeat(3, 1fr);
   }
 
-  .question:not(:nth-of-type(2)) .answer {
+  .annotation-of-answers {
     grid-column: 2/4;
   }
 
-  .question:nth-of-type(2) .answer:first-of-type {
+  .question:not(.question-what) .answer {
+    grid-column: 2/4;
+  }
+
+  .question-what .answer:first-of-type {
     grid-column: 1/auto;
   }
 }
