@@ -20,7 +20,7 @@
   --header-theme-menu-padding-block-end: 30px;
   --headline-header-margin-inline-start: 0;
   --in-page-margin-block-end: 40px;
-  --main-gap: 50px;
+  --main-gap: 30px;
   --question-gap: 0;
   --in-question-margin-block-end: 20px;
   --gallery-gap: 10px;
@@ -34,7 +34,7 @@
     --headline-font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
     --headline-header-margin-inline-start: -20px;
     --in-page-margin-block-end: 60px;
-    --main-gap: 80px;
+    --main-gap: 60px;
     --question-gap: 20px;
     --gallery-gap: 20px;
   }
